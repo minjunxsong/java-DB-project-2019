@@ -1,0 +1,24 @@
+-- Table: public.tb_writespace
+
+-- DROP TABLE public.tb_writespace;
+
+CREATE TABLE public.tb_writespace
+(
+  "t_글내용" character varying(9999),
+  "t_제목" character varying(99) NOT NULL,
+  t_dong character varying(10),
+  "t_조회수" integer,
+  "t_글쓴시간" character varying(1000),
+  CONSTRAINT tb_writespace_pkey PRIMARY KEY ("t_제목"),
+  CONSTRAINT "연결" FOREIGN KEY ("t_제목")
+      REFERENCES public.freetable ("제목") MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT "tb_writespace_t_글내용_key" UNIQUE ("t_글내용")
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.tb_writespace
+  OWNER TO postgres;
+COMMENT ON TABLE public.tb_writespace
+  IS '자유게시판  글저장공간';

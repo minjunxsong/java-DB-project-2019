@@ -1,0 +1,21 @@
+-- Table: public.tb_member
+
+-- DROP TABLE public.tb_member;
+
+CREATE TABLE public.tb_member
+(
+  id character varying(12) NOT NULL,
+  pwd character varying(12) NOT NULL,
+  name character varying(16) NOT NULL,
+  tel character varying(13) NOT NULL,
+  dong character varying(10) NOT NULL,
+  hosu character varying(10) NOT NULL,
+  CONSTRAINT tb_member_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.tb_member
+  OWNER TO postgres;
+COMMENT ON TABLE public.tb_member
+  IS '회원목록';

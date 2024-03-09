@@ -1,0 +1,18 @@
+-- Table: public.helptable
+
+-- DROP TABLE public.helptable;
+
+CREATE TABLE public.helptable
+(
+  "동" character varying,
+  "호수" character varying(10),
+  "제목" character varying(20) NOT NULL,
+  CONSTRAINT helptable_pkey PRIMARY KEY ("제목")
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.helptable
+  OWNER TO postgres;
+COMMENT ON TABLE public.helptable
+  IS '도움게시판';

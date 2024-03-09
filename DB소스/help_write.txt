@@ -1,0 +1,25 @@
+-- Table: public.help_write
+
+-- DROP TABLE public.help_write;
+
+CREATE TABLE public.help_write
+(
+  "h_글내용" character varying(9999),
+  "h_제목" character varying(999) NOT NULL,
+  h_dong character varying(30),
+  "h_조회수" integer,
+  "h_글쓴시간" character varying(999),
+  h_hosu character varying(90),
+  CONSTRAINT help_write_pkey PRIMARY KEY ("h_제목"),
+  CONSTRAINT "연굘" FOREIGN KEY ("h_제목")
+      REFERENCES public.helptable ("제목") MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT "help_write_h_글내용_key" UNIQUE ("h_글내용")
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.help_write
+  OWNER TO postgres;
+COMMENT ON TABLE public.help_write
+  IS '도움게시판 글저장공간';

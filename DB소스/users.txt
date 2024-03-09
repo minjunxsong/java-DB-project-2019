@@ -1,0 +1,20 @@
+-- Table: public.users
+
+-- DROP TABLE public.users;
+
+CREATE TABLE public.users
+(
+  u_id character varying(20) NOT NULL,
+  u_pwd character varying(20) NOT NULL,
+  u_dong character varying(10),
+  u_hosu character varying(10),
+  u_name character varying(20),
+  CONSTRAINT users_pkey PRIMARY KEY (u_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.users
+  OWNER TO postgres;
+COMMENT ON TABLE public.users
+  IS '·Î±×ÀÎ';

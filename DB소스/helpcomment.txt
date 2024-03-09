@@ -1,0 +1,33 @@
+-- Table: public.helpcomment
+
+-- DROP TABLE public.helpcomment;
+
+CREATE TABLE public.helpcomment
+(
+  hc_dong character varying(10),
+  hc_hosu character varying(10),
+  hc_comment character varying(1000) NOT NULL,
+  "hc_글내용" character varying(9999),
+  "hc_채택" character varying(3),
+  CONSTRAINT helpcomment_pkey PRIMARY KEY (hc_comment),
+  CONSTRAINT "helpcomment.hc_글내용->help_write.h_글내용" FOREIGN KEY ("hc_글내용")
+      REFERENCES public.help_write ("h_글내용") MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.helpcomment
+  OWNER TO postgres;
+COMMENT ON TABLE public.helpcomment
+  IS '도움게시판 댓글';
+
+-- Index: public."fki_helpcomment.hc_글내용->help_write.h_글내용"
+
+-- DROP INDEX public."fki_helpcomment.hc_글내용->help_write.h_글내용";
+
+CREATE INDEX "fki_helpcomment.hc_글내용->help_write.h_글내용"
+  ON public.helpcomment
+  USING btree
+  ("hc_글내용" COLLATE pg_catalog."default");
+

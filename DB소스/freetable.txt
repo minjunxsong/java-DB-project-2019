@@ -1,0 +1,18 @@
+-- Table: public.freetable
+
+-- DROP TABLE public.freetable;
+
+CREATE TABLE public.freetable
+(
+  "동" character(10) NOT NULL,
+  "호수" character varying(10),
+  "제목" character varying(20) NOT NULL,
+  CONSTRAINT freetable_pkey PRIMARY KEY ("제목")
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.freetable
+  OWNER TO postgres;
+COMMENT ON TABLE public.freetable
+  IS '자유게시판';

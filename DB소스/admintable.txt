@@ -1,0 +1,17 @@
+-- Table: public.admintable
+
+-- DROP TABLE public.admintable;
+
+CREATE TABLE public.admintable
+(
+  "공지사항" character varying(99999) NOT NULL,
+  "관리자" character varying(100),
+  CONSTRAINT admintable_pkey PRIMARY KEY ("공지사항")
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.admintable
+  OWNER TO postgres;
+COMMENT ON TABLE public.admintable
+  IS '공지게시판';
